@@ -24,12 +24,12 @@ extension UIView {
         gradientLayer.transform = CATransform3DMakeRotation(CGFloat(Float.pi / 2), 0, 0, 1)
         layer.mask = gradientLayer
 
-        let animation = CABasicAnimation(keyPath: "transform.translation.x")
+        let animation = CABasicAnimation(keyPath: Strings.animation)
         animation.duration = animationSpeed
         animation.fromValue = -2 * bounds.width
         animation.toValue = 2 * bounds.width
         animation.repeatCount = Float.infinity
-        gradientLayer.add(animation, forKey: "shimmerAnimation")
+        gradientLayer.add(animation, forKey: Strings.shimmerAnimation)
     }
 
     /// Остановка анимации шиммера

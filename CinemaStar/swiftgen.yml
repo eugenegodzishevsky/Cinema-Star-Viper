@@ -12,10 +12,10 @@
 ##   SwiftGen will parse all `.strings` files found in that folder.
  strings:
    inputs:
-     - CinemaStar/SwiftGen/Localizable.strings
+     - CinemaStar/Localizable.strings
    outputs:
      - templateName: structured-swift5
-       output: CinemaStar/SwiftGen/Strings+Generated.swift
+       output: CinemaStar/Strings+Generated.swift
        params:
          enumName: Strings
 
@@ -31,7 +31,7 @@
      - templateName: swift5
        params:
          forceProvidesNamespaces: true
-       output: CinemaStar/SwiftGen/XCAssets+Generated.swift
+       output: CinemaStar/XCAssets+Generated.swift
        params:
          enumName: inputs
 

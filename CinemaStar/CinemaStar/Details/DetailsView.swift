@@ -42,7 +42,7 @@ struct DetailsView: View {
             Button {
                 presenter.detailsRouter?.goBack()
             } label: {
-                Image("backArrow")
+                Image(Strings.backArrow)
             }
         }
     }
@@ -51,7 +51,7 @@ struct DetailsView: View {
         Button {
             presenter.isFavourite.toggle()
         } label: {
-            Image(presenter.isFavourite ? "favourites2" : "favourite")
+            Image(presenter.isFavourite ? Strings.fav2 : Strings.fav)
         }
     }
 
@@ -68,14 +68,14 @@ struct DetailsView: View {
                     Text(presenter.details?.nameOfFilm ?? "")
                         .foregroundColor(.white)
                     HStack {
-                        Text("⭐️")
+                        Text(Strings.star)
                         Text("\(String(format: "%.1f", presenter.details?.rankOfFilm ?? ""))")
                             .foregroundColor(.white)
                     }
                 }
                 Spacer()
             }
-            Button("Смотреть") {
+            Button(Strings.lookText) {
                 presenter.isShowAlert.toggle()
             }
             .frame(width: 358, height: 48)
@@ -83,8 +83,8 @@ struct DetailsView: View {
             .background(Color(red: 43 / 255, green: 81 / 255, blue: 74 / 255))
             .cornerRadius(12)
             .padding(.vertical, 10)
-            .alert("Упс!", isPresented: $presenter.isShowAlert) {} message: {
-                Text("Функционал в разработке:(")
+            .alert(Strings.ops, isPresented: $presenter.isShowAlert) {} message: {
+                Text(Strings.funcInDevelop)
             }
         }
         .padding(.horizontal)
@@ -100,7 +100,7 @@ struct DetailsView: View {
                 Button {
                     presenter.isfullInformationAboutFilm.toggle()
                 } label: {
-                    Image(presenter.isfullInformationAboutFilm ? "arrow2" : "arrow")
+                    Image(presenter.isfullInformationAboutFilm ? Strings.arrow2 : Strings.arrow)
                 }
                 .padding(.top, -15)
             }
@@ -122,7 +122,7 @@ struct DetailsView: View {
 
     private var actorsView: some View {
         VStack(alignment: .leading) {
-            Text("Актеры и съемочная группа ")
+            Text(Strings.actorsText)
                 .foregroundColor(.white)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
@@ -147,7 +147,7 @@ struct DetailsView: View {
     private var countryView: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("Язык")
+                Text(Strings.lang)
                     .foregroundColor(.white)
                 Spacer().frame(height: 3)
                 Text(presenter.details?.spokenLanguages ?? "")
@@ -163,7 +163,7 @@ struct DetailsView: View {
 
     private var similarView: some View {
         VStack(alignment: .leading) {
-            Text("Смотрите также")
+            Text(Strings.lookMore)
                 .foregroundColor(.white)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {

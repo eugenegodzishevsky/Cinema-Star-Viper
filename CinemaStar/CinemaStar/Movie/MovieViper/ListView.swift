@@ -38,10 +38,10 @@ struct ListView: View {
     }
 
     private var headerTitle: some View {
-        Text("Смотрите исторические\nфильмы на")
-            .font(.custom("Verdana", size: 20))
-            + Text(" CINEMA STAR")
-            .font(.custom("Verdana-Bold", size: 18))
+        Text(Strings.title)
+            .font(.custom(Strings.verdana, size: 20))
+        + Text(Strings.cinemaStar)
+            .font(.custom(Strings.verdanaBold, size: 18))
     }
 
     private var filmsView: some View {
@@ -69,7 +69,6 @@ struct ListView: View {
                         .padding(.leading, 5)
                     }
                     .onTapGesture {
-                        print("Tapped film: \(film.name)")
                         presenter.goToDetail(id: film.id)
                     }
                 }

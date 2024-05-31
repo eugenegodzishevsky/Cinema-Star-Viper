@@ -24,9 +24,9 @@ final class CoreDataStorageService: CoreDataStorageServiceProtocol {
     // MARK: - Constants
 
     enum Constants {
-        static let containerName = "CacheDataModel"
-        static let entityNameMovieCard = "MovieCardsCoreDataStorage"
-        static let entityNameMovieDetails = "MovieDetailsCoreDataStorage"
+        static let containerName = Strings.containerName
+        static let entityNameMovieCard = Strings.entityNameMovieCard
+        static let entityNameMovieDetails = Strings.entityNameMovieDetails
     }
 
     static let shared = CoreDataStorageService()
@@ -75,7 +75,6 @@ final class CoreDataStorageService: CoreDataStorageServiceProtocol {
 
     func createMovieDetails(_ movieDetails: DetailsDTO, id: Int32) {
         print("Creating movie details for id \(id)...")
-        // Проверяем, существуют ли уже данные для данного идентификатора
         guard fetchMovieDetails(id) == nil else {
             print("Movie details already exist for id \(id). Skipping creation.")
             return

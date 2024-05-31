@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DA19D5B22C0963660023501E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D5B12C0963660023501E /* ImageLoader.swift */; };
+		DA19D5B92C098C370023501E /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D5B62C098C370023501E /* XCAssets+Generated.swift */; };
+		DA19D5BA2C098C370023501E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA19D5B72C098C370023501E /* Localizable.strings */; };
+		DA19D5BB2C098C370023501E /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D5B82C098C370023501E /* Strings+Generated.swift */; };
 		DA3372D02BD729C2005F1CFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3372CF2BD729C2005F1CFB /* AppDelegate.swift */; };
 		DA3372D22BD729C2005F1CFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3372D12BD729C2005F1CFB /* SceneDelegate.swift */; };
 		DA3372D72BD729C2005F1CFB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = DA3372D62BD729C2005F1CFB /* Base */; };
@@ -93,6 +96,9 @@
 		DA19D5AD2C08B8620023501E /* MovieDetailsCoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieDetailsCoreDataStorage.swift; path = CinemaStar/CoreData/MovieDetailsCoreDataStorage.swift; sourceTree = "<group>"; };
 		DA19D5AE2C08B8620023501E /* MovieCardsCoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieCardsCoreDataStorage.swift; path = CinemaStar/CoreData/MovieCardsCoreDataStorage.swift; sourceTree = "<group>"; };
 		DA19D5B12C0963660023501E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		DA19D5B62C098C370023501E /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "XCAssets+Generated.swift"; path = "CinemaStar/XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		DA19D5B72C098C370023501E /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = CinemaStar/Localizable.strings; sourceTree = "<group>"; };
+		DA19D5B82C098C370023501E /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Strings+Generated.swift"; path = "CinemaStar/Strings+Generated.swift"; sourceTree = "<group>"; };
 		DA3372CC2BD729C2005F1CFB /* CinemaStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA3372CF2BD729C2005F1CFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA3372D12BD729C2005F1CFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +181,9 @@
 			children = (
 				DA19D5AD2C08B8620023501E /* MovieDetailsCoreDataStorage.swift */,
 				DA19D5AE2C08B8620023501E /* MovieCardsCoreDataStorage.swift */,
+				DA19D5B72C098C370023501E /* Localizable.strings */,
+				DA19D5B82C098C370023501E /* Strings+Generated.swift */,
+				DA19D5B62C098C370023501E /* XCAssets+Generated.swift */,
 				DA3372CE2BD729C2005F1CFB /* CinemaStar */,
 				DA3372E52BD729C4005F1CFB /* CinemaStarTests */,
 				DA3372EF2BD729C4005F1CFB /* CinemaStarUITests */,
@@ -347,6 +356,7 @@
 			buildConfigurationList = DA3372F62BD729C4005F1CFB /* Build configuration list for PBXNativeTarget "CinemaStar" */;
 			buildPhases = (
 				DA3372C82BD729C2005F1CFB /* Sources */,
+				DA19D5BC2C09980D0023501E /* SwiftGen */,
 				DA88C3F42BDBE31C00AB5B1B /* Swift Format */,
 				DA88C3F52BDBE38700AB5B1B /* Swift Lint */,
 				DA3372C92BD729C2005F1CFB /* Frameworks */,
@@ -457,6 +467,7 @@
 				DA3373312BD79A62005F1CFB /* Inter-Regular.ttf in Resources */,
 				DA3373342BD79A62005F1CFB /* Inter-Medium.ttf in Resources */,
 				DA3372DC2BD729C3005F1CFB /* Base in Resources */,
+				DA19D5BA2C098C370023501E /* Localizable.strings in Resources */,
 				DA33732E2BD79A62005F1CFB /* Inter-Bold.ttf in Resources */,
 				DA3372D72BD729C2005F1CFB /* Base in Resources */,
 			);
@@ -485,6 +496,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		DA19D5BC2C09980D0023501E /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n\"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n    echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
+		};
 		DA88C3F42BDBE31C00AB5B1B /* Swift Format */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -533,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA36A982C06CAF5008026A7 /* DetailsPresenter.swift in Sources */,
+				DA19D5B92C098C370023501E /* XCAssets+Generated.swift in Sources */,
 				DAA36A892C06C64B008026A7 /* ListPresenter.swift in Sources */,
 				DAA36AA02C06D40B008026A7 /* NetworkService.swift in Sources */,
 				DA3373212BD78D1F005F1CFB /* ListDTO.swift in Sources */,
@@ -551,6 +581,7 @@
 				DAA36A952C06CAC3008026A7 /* DetailsModel.swift in Sources */,
 				DAA36A842C06C586008026A7 /* ListModel.swift in Sources */,
 				DAA36AA82C06D653008026A7 /* SimilarMovieDTO.swift in Sources */,
+				DA19D5BB2C098C370023501E /* Strings+Generated.swift in Sources */,
 				DAA36ABE2C084C52008026A7 /* CoreDtataService.swift in Sources */,
 				DAA36AAF2C0845E0008026A7 /* CacheDataModel.xcdatamodeld in Sources */,
 				DAA36A8B2C06C7EC008026A7 /* ListInteractor.swift in Sources */,

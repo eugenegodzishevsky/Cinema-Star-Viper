@@ -36,10 +36,10 @@ final class DetailsPresenter: DetailsPresenterProtocol, ObservableObject {
     }
 
     func convertTypeOfFilm() -> String {
-        if details?.type == "tv-series" {
-            return "Сериал"
+        if details?.type == Strings.type {
+            return Strings.serial
         } else {
-            return "Фильм"
+            return Strings.film
         }
     }
 }

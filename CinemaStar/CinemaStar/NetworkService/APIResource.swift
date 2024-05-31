@@ -16,16 +16,16 @@ extension APIResource {
     /// вычисляемое свойста для составление url запроса для фильмов
     var url: URLRequest? {
         let keyChain = KeyChain()
-        keyChain.saveToken("92JSXDT-SVE4DKZ-KWA35X9-K3H52VA", forKey: "token")
-        let token = keyChain.loadToken(forKey: "token")
+        keyChain.saveToken(Strings.apiToken, forKey: Strings.token)
+        let token = keyChain.loadToken(forKey: Strings.token)
         var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.kinopoisk.dev"
+        components.scheme = Strings.https
+        components.host = Strings.apiKinopoiskDev
         components.path = methodPath
-        components.queryItems = [URLQueryItem(name: "query", value: "история")]
+        components.queryItems = [URLQueryItem(name: Strings.query, value: Strings.history)]
         guard let url = components.url else { return nil }
         var request = URLRequest(url: url)
-        request.setValue(token, forHTTPHeaderField: "X-API-KEY")
+        request.setValue(token, forHTTPHeaderField: Strings.xapikey)
 
         return request
     }
@@ -33,15 +33,15 @@ extension APIResource {
     /// вычисляемое свойста для составление url запроса для деталей фильмов
     var urlDetails: URLRequest? {
         let keyChain = KeyChain()
-        keyChain.saveToken("92JSXDT-SVE4DKZ-KWA35X9-K3H52VA", forKey: "token")
-        let token = keyChain.loadToken(forKey: "token")
+        keyChain.saveToken(Strings.apiToken, forKey: Strings.token)
+        let token = keyChain.loadToken(forKey: Strings.token)
         var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.kinopoisk.dev"
+        components.scheme = Strings.https
+        components.host = Strings.apiKinopoiskDev
         components.path = methodPathDetail
         guard let url = components.url else { return nil }
         var request = URLRequest(url: url)
-        request.setValue(token, forHTTPHeaderField: "X-API-KEY")
+        request.setValue(token, forHTTPHeaderField: Strings.xapikey)
 
         return request
     }
@@ -53,10 +53,10 @@ struct FilmsResourse: APIResource {
 //    var url: String?
 
     var methodPath: String {
-        "/v1.4/movie/search"
+        Strings.movieSearch
     }
 
     var methodPathDetail: String {
-        "/v1.4/movie/\(id ?? 0)"
+        "\(Strings.movie)\(id ?? 0)"
     }
 }
