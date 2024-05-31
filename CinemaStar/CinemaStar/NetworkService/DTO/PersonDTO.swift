@@ -3,10 +3,10 @@
 
 import Foundation
 
-/// Информация об актере
+/// Актёры
 struct PersonDTO: Codable {
-    /// Имя актера
+    /// фото актера
+    let photo: String
+    /// имя актера
     let name: String?
-    /// Ссылка на изображение актера
-    let photo: String?
 }

@@ -4,20 +4,10 @@
 import Foundation
 
 /// Нетворк сервис запроса изображения
-final class ImageNetworkService {
-    // MARK: - Public Properties
+final class ImageRequest {
+    let url: URL
 
-    var url: URL?
-}
-
-// MARK: - ImageRequest + NetworkRequest
-
-extension ImageNetworkService: NetworkRequest {
-    func decode(_ data: Data) -> Data? {
-        data
-    }
-
-    func execute(withCompletion completion: @escaping (Result<Data?, any Error>) -> Void) {
-        load(url, withCompletion: completion)
+    init(url: URL) {
+        self.url = url
     }
 }

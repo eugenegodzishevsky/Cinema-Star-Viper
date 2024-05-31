@@ -1,10 +1,10 @@
-// RatingDTO.swift
+// DetailsRatingDTO.swift
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation
 
-/// рейтинг фильма
-struct RatingDTO: Codable {
+/// Рейтинг
+struct DetailsRatingDTO: Codable {
     /// рейтинг
     let kp: Double
 }

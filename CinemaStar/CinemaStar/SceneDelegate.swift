@@ -3,27 +3,29 @@
 
 import UIKit
 
-final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-
-    private var appCoordinator: AppCoordinator?
 
     func scene(
         _ scene: UIScene,
-        willConnectTo _: UISceneSession,
-        options _: UIScene.ConnectionOptions
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        createRootViewController(windowScene)
+        configureSceneDelegate(windowScene: windowScene)
     }
 
-    private func createRootViewController(_ windowScene: UIWindowScene) {
-        window = UIWindow(windowScene: windowScene)
-        if let window {
-            window.makeKeyAndVisible()
-            let moduleBuilder = ModuleBuilder()
-            appCoordinator = AppCoordinator(appBuilder: moduleBuilder)
-            appCoordinator?.start()
-        }
+    private func configureSceneDelegate(windowScene: UIWindowScene) {
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        showCatalogFilms()
+    }
+
+    private func showCatalogFilms() {
+        let catalogRouter = ListRouter().start()
+        guard let catalogEntry = catalogRouter.entry else { return }
+        let rootViewController = UINavigationController(rootViewController: catalogEntry)
+        window?.rootViewController = rootViewController
+        window?.makeKeyAndVisible()
     }
 }
