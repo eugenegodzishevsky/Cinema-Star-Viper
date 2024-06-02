@@ -26,36 +26,48 @@ final class ListInteractor: ListInteractorProtocol {
         self.networkService = networkService
     }
 
-    // MARK: - Public Methods
-
     func fetchFilm() {
+        print("Fetching film...")
         presenter?.state = .loading
 
         if let cachedData = CoreDataStorageService.shared.fetchMovieCards() {
+            print("Cached data found.")
             let films = cachedData.docs.map { ListOfFilmsModel(dto: $0) }
             presenter?.films = films
             presenter?.state = .success(films)
+            print("Film fetched successfully from cache.")
             return
         }
 
-        guard let url = response.url else { return }
+        guard let url = response.url else {
+            print("URL is unavailable. Setting state to failure.")
+            CoreDataStorageService.shared.deleteAllMovies()
+
+            presenter?.state = .failure
+            return
+        }
+
+        print("Fetching film from network...")
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
             .decode(type: ListDTO.self, decoder: JSONDecoder())
             .receive(on: RunLoop.main)
-            .sink { [unowned self] completion in
-                if case .failure = completion {
-                    presenter?.state = .failure
-                    return
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
+                if case let .failure(error) = completion {
+                    print("Failed to fetch film from network: \(error)")
+                    self.presenter?.state = .failure
                 }
-            } receiveValue: { [unowned self] result in
+            }, receiveValue: { [weak self] result in
+                guard let self = self else { return }
+                print("Film fetched successfully from network.")
                 let res = result.docs.map { ListOfFilmsModel(dto: $0.self) }
-                presenter?.films = res
-                if let films = presenter?.films, !films.isEmpty {
-                    presenter?.state = .success(films)
-
+                self.presenter?.films = res
+                if !res.isEmpty {
+                    print("Saving film to CoreData.")
+                    self.presenter?.state = .success(res)
                     CoreDataStorageService.shared.createMovieCards(result)
                 }
-            }
+            })
     }
 }

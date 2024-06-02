@@ -40,7 +40,7 @@ struct ListView: View {
     private var headerTitle: some View {
         Text(Strings.title)
             .font(.custom(Strings.verdana, size: 20))
-        + Text(Strings.cinemaStar)
+            + Text(Strings.cinemaStar)
             .font(.custom(Strings.verdanaBold, size: 18))
     }
 
@@ -50,10 +50,10 @@ struct ListView: View {
                 ForEach(presenter.films ?? [], id: \.id) { film in
                     VStack {
                         CachedImageView(url: film.poster)
-                                                       .scaledToFill()
-                                                       .frame(width: 170, height: 200)
-                                                       .cornerRadius(9)
-                                                       .clipped()
+                            .scaledToFill()
+                            .frame(width: 170, height: 200)
+                            .cornerRadius(9)
+                            .clipped()
                         VStack(alignment: .leading) {
                             Text(film.name)
                                 .frame(height: 30)

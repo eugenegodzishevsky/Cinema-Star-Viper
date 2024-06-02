@@ -23,7 +23,6 @@ final class DetailsRouter: DetailsRouterProtocol {
         presenter.detailsInteractor = interaсtor
         presenter.detailsRouter = router
 
-
         let detailsView = DetailsView(presenter: presenter)
         let hostingController = UIHostingController(rootView: detailsView)
         presenter.id = id

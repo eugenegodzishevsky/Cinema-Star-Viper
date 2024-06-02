@@ -11,14 +11,19 @@ protocol DetailsInteractorProtocol {
 
 final class DetailsInteractor: DetailsInteractorProtocol {
     // MARK: - Public Properties
+
     var presenter: DetailsPresenterProtocol?
     private var response = FilmsResourse()
     private var cancellable: AnyCancellable?
+
     // MARK: - Initializers
+
     init(presenter: DetailsPresenterProtocol) {
         self.presenter = presenter
     }
-    // MARK: - Public Methods    
+
+    // MARK: - Public Methods
+
     func fetchDetails(id: Int) {
         response.id = id
         presenter?.state = .loading
@@ -47,5 +52,4 @@ final class DetailsInteractor: DetailsInteractorProtocol {
                 CoreDataStorageService.shared.createMovieDetails(details, id: Int32(id))
             }
     }
-
 }

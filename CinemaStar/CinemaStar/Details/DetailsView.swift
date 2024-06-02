@@ -63,7 +63,7 @@ struct DetailsView: View {
                     .frame(width: 170, height: 200)
                     .cornerRadius(9)
                     .clipped()
-                
+
                 VStack {
                     Text(presenter.details?.nameOfFilm ?? "")
                         .foregroundColor(.white)

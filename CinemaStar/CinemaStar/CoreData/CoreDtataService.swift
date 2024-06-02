@@ -147,12 +147,25 @@ final class CoreDataStorageService: CoreDataStorageServiceProtocol {
         }
     }
 
+//    func deleteAllMovies() {
+//        print("Deleting all movies from CoreData...")
+//        guard let storageMovieCards = getMovies() else { return }
+//        storageMovieCards.forEach { context.delete($0) }
+//        saveContext()
+//        print("All movies deleted from CoreData.")
+//    }
+
     func deleteAllMovies() {
         print("Deleting all movies from CoreData...")
-        guard let storageMovieCards = getMovies() else { return }
-        storageMovieCards.forEach { context.delete($0) }
-        saveContext()
-        print("All movies deleted from CoreData.")
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "MovieCard")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try persistentContainer.viewContext.execute(batchDeleteRequest)
+            print("All movies deleted from CoreData.")
+        } catch {
+            print("Failed to delete movies: \(error)")
+        }
     }
 
     // MARK: - Private Methods

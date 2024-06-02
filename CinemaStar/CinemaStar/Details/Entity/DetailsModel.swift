@@ -1,8 +1,31 @@
 // DetailsModel.swift
 // Copyright © RoadMap. All rights reserved.
 
+import Foundation
+
+// Протокол Equatable для PersonDTO
+extension PersonDTO: Equatable {
+    static func == (lhs: PersonDTO, rhs: PersonDTO) -> Bool {
+        lhs.photo == rhs.photo && lhs.name == rhs.name
+    }
+}
+
+// Протокол Equatable для SimilarMovieDTO
+extension SimilarMovieDTO: Equatable {
+    static func == (lhs: SimilarMovieDTO, rhs: SimilarMovieDTO) -> Bool {
+        lhs.name == rhs.name && lhs.poster == rhs.poster
+    }
+}
+
+// Протокол Equatable для PosterDTO
+extension PosterDTO: Equatable {
+    static func == (lhs: PosterDTO, rhs: PosterDTO) -> Bool {
+        lhs.url == rhs.url
+    }
+}
+
 /// Модель для данных экрана деталей
-struct DetailsOfFilmModel: Decodable, Encodable {
+struct DetailsOfFilmModel: Decodable, Encodable, Equatable {
     /// постер фильма
     let poster: String
     /// имя фильма
@@ -38,6 +61,20 @@ struct DetailsOfFilmModel: Decodable, Encodable {
         persons = dto.persons
         spokenLanguages = dto.spokenLanguages?.first?.name ?? ""
         simularMovies = dto.similarMovies ?? []
+    }
+
+    static func == (lhs: DetailsOfFilmModel, rhs: DetailsOfFilmModel) -> Bool {
+        lhs.poster == rhs.poster &&
+            lhs.nameOfFilm == rhs.nameOfFilm &&
+            lhs.rankOfFilm == rhs.rankOfFilm &&
+            lhs.id == rhs.id &&
+            lhs.description == rhs.description &&
+            lhs.year == rhs.year &&
+            lhs.countres == rhs.countres &&
+            lhs.type == rhs.type &&
+            lhs.persons == rhs.persons &&
+            lhs.spokenLanguages == rhs.spokenLanguages &&
+            lhs.simularMovies == rhs.simularMovies
     }
 }
 

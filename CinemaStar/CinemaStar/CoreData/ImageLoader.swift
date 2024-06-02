@@ -1,9 +1,5 @@
-//
-//  ImageLoader.swift
-//  CinemaStar
-//
-//  Created by Vermut xxx on 31.05.2024.
-//
+// ImageLoader.swift
+// Copyright © RoadMap. All rights reserved.
 
 import SwiftUI
 
@@ -30,7 +26,7 @@ class ImageLoader: ObservableObject {
 
     func loadImage(from url: String) {
         if let cachedImage = CoreDataStorageService.shared.fetchImageFromCache(url: url) {
-            self.image = cachedImage
+            image = cachedImage
         } else {
             downloadImage(from: url)
         }

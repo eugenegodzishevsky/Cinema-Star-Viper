@@ -4,7 +4,7 @@
 import Foundation
 
 /// Модель для данных фильма
-final class ListOfFilmsModel: Decodable, Encodable {
+final class ListOfFilmsModel: Decodable, Encodable, Equatable {
     // MARK: - Private Properties
 
     /// постер фильма
@@ -30,5 +30,14 @@ final class ListOfFilmsModel: Decodable, Encodable {
         name = listModel.nameOfFilm
         rating = listModel.rankOfFilm
         id = listModel.id
+    }
+
+    // MARK: - Equatable
+
+    static func == (lhs: ListOfFilmsModel, rhs: ListOfFilmsModel) -> Bool {
+        lhs.poster == rhs.poster &&
+            lhs.name == rhs.name &&
+            lhs.rating == rhs.rating &&
+            lhs.id == rhs.id
     }
 }
