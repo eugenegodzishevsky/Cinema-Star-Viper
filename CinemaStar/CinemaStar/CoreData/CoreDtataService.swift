@@ -1,9 +1,6 @@
 // CoreDtataService.swift
 // Copyright © RoadMap. All rights reserved.
 
-// CoreDataStorageService.swift
-// Copyright © RoadMap. All rights reserved.
-
 import CoreData
 import Foundation
 import SwiftUI
