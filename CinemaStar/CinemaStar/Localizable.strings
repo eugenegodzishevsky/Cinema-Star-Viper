@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  CinemaStar
+
+  Created by Vermut xxx on 31.05.2024.
+  
+*/
+
+// Core Data Manager
+"containerName" = "CacheDataModel";
+"entityNameMovieCard" = "MovieCardsCoreDataStorage";
+"entityNameMovieDetails" = "MovieDetailsCoreDataStorage";
+
+
+"apiToken" = "92JSXDT-SVE4DKZ-KWA35X9-K3H52VA";
+"token" = "token";
+"https" = "https";
+"ApiKinopoiskDev" = "api.kinopoisk.dev";
+"query" = "query";
+"history" = "история";
+"XAPIKEY" = "X-API-KEY";
+"movieSearch" = "/v1.4/movie/search";
+"movie" = "/v1.4/movie/";
+
+
+// List View
+"title" = "Смотрите исторически\nфильмы на";
+"verdana" = "Verdana";
+"cinemaStar" = " CINEMA STAR";
+"verdanaBold" = "Verdana-Bold";
+
+// Details Presenter
+"type" = "tv-series";
+"serial" = "Сериал";
+"film" = "Фильм";
+
+// Details View
+
+"failureText" = "Failure data";
+"lookText" = "Смотреть";
+"ops" = "Упс!";
+"funcInDevelop" = "Функционал в разработке:(";
+"actorsText" = "Актеры и съемочная группа ";
+"lang" = "Язык";
+"lookMore" = "Смотрите также";
+"backArrow" = "backArrow";
+"fav" = "favourite";
+"fav2" = "favourites2";
+"star" = "⭐️";
+"arrow" = "arrow";
+"arrow2" = "arrow2";
+
+// Shimmers
+"animation" = "transform.translation.x";
+"shimmerAnimation" = "shimmerAnimation";

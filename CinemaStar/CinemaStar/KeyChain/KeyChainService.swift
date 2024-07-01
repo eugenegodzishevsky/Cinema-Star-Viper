@@ -1,31 +1,31 @@
 // KeyChainService.swift
 // Copyright © RoadMap. All rights reserved.
 
-import Foundation
 import KeychainSwift
 
-/// Сервис для хранения API-ключа
-final class KeyChainService {
-    // MARK: - Constants
+/// протокол для использования keyChain
+protocol KeyChainProtocol: AnyObject {
+    /// сохранение
+    func saveToken(_ token: String, forKey key: String)
+    /// загрузка
+    func loadToken(forKey key: String) -> String?
+    /// удаление
+    func deleteToken(forKey key: String)
+}
 
-    enum Constants {
-        static let key = "API key"
-        static let keyNotFound = "key is not found in keyChain"
+/// keyChain
+final class KeyChain: KeyChainProtocol {
+    private let keychain = KeychainSwift()
+
+    func saveToken(_ token: String, forKey key: String) {
+        keychain.set(token, forKey: key)
     }
 
-    // MARK: - Private Properties
-
-    private let keyChain = KeychainSwift()
-
-    // MARK: - Initializers
-
-    init() {
-//        keyChain.set("92JSXDT-SVE4DKZ-KWA35X9-K3H52VA", forKey: Constants.key)
+    func loadToken(forKey key: String) -> String? {
+        keychain.get(key)
     }
 
-    // MARK: - Public Methods
-
-    func getAPIKey() -> String {
-        keyChain.get(Constants.key) ?? Constants.keyNotFound
+    func deleteToken(forKey key: String) {
+        keychain.delete(key)
     }
 }
